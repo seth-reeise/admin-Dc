@@ -1,7 +1,6 @@
 import React from 'react';
 import {HashLink as Link} from 'react-router-hash-link';
-
-//TODO: Add login page
+import './styles.scss'
 
 function SearchListBody(props) {
     if (props.to) {
@@ -37,11 +36,12 @@ function SearchListCard(props) {
 }
 
 class CustomerSearch extends React.Component {
+
     constructor(props) {
         super(props);
         this.state = {
             loading: false,
-            customer: null,
+            customers: [],
             value: '',
         };
 
@@ -62,54 +62,31 @@ class CustomerSearch extends React.Component {
     }
 
     search() {
-        console.log('before api call: ' + this.state.value);
         fetch(
-            'https://localhost:7119/api/Contractform/search?search=' +
+            'https://localhost:7119/api/customer/search?search=' +
             this.state.value
         )
             .then(response => response.json())
-            // .then((json) => console.log(json))
             .then(data =>
                 this.setState({
-                    customer: data,
+                    customers: data,
                     loading: false,
                 })
             );
     }
 
     componentDidMount() {
-        console.log('done..');
-        console.log(this.state.customer);
+        // console.log(this.state.customers);
     }
 
     logging() {
-        console.log(this.state.customer);
+        console.log(this.state.customers);
     }
 
     render() {
-        if (!this.state.customer) {
-            return (
-                <div className={'is-justify-content-start'} >
-                    <br />
-                    <form onSubmit={this.handleSubmit}>
-                        <label>
-                            Search:&nbsp;
-                        </label>
-                        <input
-                            type={'textSearch'}
-                            value={this.state.value}
-                            onChange={this.handleChange}
-                        />
-
-                        &nbsp; <input type={'submit'} value={'Submit'} />
-                    </form>
-                    <br />
-                    Waiting...
-                </div>
-            );
-        }
         return (
             <div>
+            <div className={'search'}>
                 <br />
                 <form onSubmit={this.handleSubmit}>
                     <label>
@@ -124,37 +101,37 @@ class CustomerSearch extends React.Component {
                     </label>
                 </form>
                 <br />
+            </div>
 
-                {this.state.loading || !this.state.customer ? (
+                {this.state.loading || !this.state.customers ? (
                     <div>loading...</div>
                 ) : (
                     <div>
                         <div className={'container'}>
                             <div className={'columns is-mobile is-multiline'}>
-                                {this.state.customer.map((person, index) => (
+                                {this.state.customers.map((customer, index) => (
                                     <SearchListCard
-                                        title={person.firstName + ' ' + person.lastName}
-                                        person={person}
+                                        title={customer.firstName + ' ' + customer.lastName}
+                                        customer={customer}
                                         index={index}
                                         body={
-                                            <ul>
+                                            <div>
                                                 <p>
-                                                    <b>Dog name:</b> {person.dogName}
+                                                    <b>Dog name:</b> {customer.dogName}
                                                 </p>
                                                 <p>
-                                                    <b>Phone number:</b> {person.phoneNumber}
+                                                    <b>Phone number:</b> {customer.phoneNumber}
                                                 </p>
                                                 <p>
                                                     <b>Address:</b>{' '}
-                                                    {person.addressLine1 +
+                                                    {customer.addressLine1 +
                                                         ' ' +
-                                                        person.city +
+                                                        customer.city +
                                                         ', ' +
-                                                        person.state +
-                                                        ' ' +
-                                                        person.zipCode}{' '}
+                                                        customer.state
+                                                        }{' '}
                                                 </p>
-                                            </ul>
+                                            </div>
                                         }
                                     />
                                 ))}
