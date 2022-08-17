@@ -1,5 +1,6 @@
-# Auth0 React SDK Sample Application
+# The Divine Canine Admin Web using Auth0
 
+<!--
 This sample demonstrates the integration of [Auth0 React SDK](https://github.com/auth0/auth0-react) into a React application created using [create-react-app](https://reactjs.org/docs/create-a-new-react-app.html). The sample is a companion to the [Auth0 React SDK Quickstart](https://auth0.com/docs/quickstart/spa/react).
 
 This sample demonstrates the following use cases:
@@ -9,6 +10,7 @@ This sample demonstrates the following use cases:
 - [Showing the user profile](https://github.com/auth0-samples/auth0-react-samples/blob/master/Sample-01/src/views/Profile.js)
 - [Protecting routes](https://github.com/auth0-samples/auth0-react-samples/blob/master/Sample-01/src/views/Profile.js#L33)
 - [Calling APIs](https://github.com/auth0-samples/auth0-react-samples/blob/master/Sample-01/src/views/ExternalApi.js)
+-->
 
 ## Project setup
 
@@ -17,7 +19,7 @@ Use `npm` to install the project dependencies:
 ```bash
 npm install
 ```
-
+<!--
 ## Configuration
 
 ### Create an API
@@ -43,7 +45,7 @@ To do this, first copy `src/auth_config.json.example` into a new file in the sam
 ```
 
 **Note**: Do not specify a value for `audience` here if you do not wish to use the API part of the sample.
-
+-->
 ## Run the sample
 
 ### Compile and hot-reload for development
@@ -71,7 +73,7 @@ To build and run the Docker image, run `exec.sh`, or `exec.ps1` on Windows.
 ```bash
 npm run test
 ```
-
+<!--
 ## Frequently Asked Questions
 
 If you're having issues running the sample applications, including issues such as users not being authenticated on page refresh, please [check the auth0-react FAQ](https://github.com/auth0/auth0-react/blob/master/FAQ.md).
@@ -103,3 +105,4 @@ If you have found a bug or if you have a feature request, please report them at 
 ## License
 
 This project is licensed under the MIT license. See the [LICENSE](../LICENSE) file for more info.
+-->
