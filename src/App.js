@@ -1,6 +1,5 @@
 import React from "react";
 import { Router, Route, Switch } from "react-router-dom";
-import { Container } from "reactstrap";
 
 import Loading from "./components/Loading";
 import NavBar from "./components/NavBar";
@@ -34,13 +33,11 @@ const App = () => {
     <Router history={history}>
       <div id="app" className="d-flex flex-column h-100">
         <NavBar />
-        <Container className="flex-grow-1 mt-5">
           <Switch>
             <Route path="/" exact component={Home} />
             <Route path="/profile" component={Profile} />
             <Route path="/external-api" component={ExternalApi} />
           </Switch>
-        </Container>
         <Footer />
       </div>
     </Router>
