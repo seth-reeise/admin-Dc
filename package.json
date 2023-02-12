@@ -16,11 +16,11 @@
     "prod": "npm-run-all --parallel server api-server"
   },
   "dependencies": {
-    "@fortawesome/fontawesome-free": "^5.15.1",
     "@auth0/auth0-react": "^1.10.1",
     "@babel/core": "^7.18.5",
     "@babel/plugin-syntax-flow": "^7.17.12",
     "@babel/plugin-transform-react-jsx": "^7.17.12",
+    "@fortawesome/fontawesome-free": "^5.15.1",
     "@fortawesome/fontawesome-svg-core": "^1.2.17",
     "@fortawesome/free-solid-svg-icons": "^5.8.1",
     "@fortawesome/react-fontawesome": "^0.1.4",
@@ -46,6 +46,7 @@
   "devDependencies": {
     "@testing-library/jest-dom": "^5.16",
     "@testing-library/react": "^12.1",
+    "dotenv-webpack": "^8.0.1",
     "jest-environment-jsdom": "^27.0",
     "jest-fetch-mock": "^3.0",
     "node-sass": "^7.0.1",

@@ -1,6 +1,8 @@
-import React from 'react';
+import React, {Component} from 'react';
 import {HashLink as Link} from 'react-router-hash-link';
 import './styles.scss'
+import {Auth0Context} from "@auth0/auth0-react";
+import { withAuth0 } from '@auth0/auth0-react';
 
 function SearchListBody(props) {
     if (props.to) {
@@ -35,9 +37,11 @@ function SearchListCard(props) {
     );
 }
 
-class CustomerSearch extends React.Component {
+
+class CustomerSearch extends Component {
 
     constructor(props) {
+
         super(props);
         this.state = {
             loading: false,
@@ -48,6 +52,7 @@ class CustomerSearch extends React.Component {
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
     }
+
 
     handleChange(event) {
         this.setState({ value: event.target.value });
@@ -61,10 +66,20 @@ class CustomerSearch extends React.Component {
         this.search();
     }
 
-    search() {
+
+    async search() {
+        const { getAccessTokenSilently } = this.props.auth0;
+        const token = await getAccessTokenSilently();
+        // console.log('this is the token in search', token);
+
+
         fetch(
             'https://localhost:7119/api/customer/search?search=' +
-            this.state.value
+            this.state.value, {
+                headers: {
+                    Authorization: `Bearer ${token}`
+                }
+            }
         )
             .then(response => response.json())
             .then(data =>
@@ -144,4 +159,4 @@ class CustomerSearch extends React.Component {
     }
 }
 
-export default CustomerSearch;
+export default withAuth0(CustomerSearch);

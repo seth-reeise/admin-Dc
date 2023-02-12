@@ -3,6 +3,7 @@ import { NavLink as RouterNavLink } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 
+
 import {
   Collapse,
   Container,
@@ -27,6 +28,7 @@ const NavBar = () => {
     isAuthenticated,
     loginWithRedirect,
     logout,
+    getAccessTokenSilently
   } = useAuth0();
   const toggle = () => setIsOpen(!isOpen);
 
@@ -36,7 +38,8 @@ const NavBar = () => {
       });
 
   const logo = require('./../assets/logo-square.jpg');
-
+  const token = getAccessTokenSilently();
+  console.log('token', token);
   return (
       <div className="nav-container">
         <Navbar color="light" light expand='md'>
