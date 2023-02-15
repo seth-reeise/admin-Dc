@@ -64,7 +64,7 @@ class CustomerSearch extends React.Component {
     // https://localhost:7119/api/customer/search?search=
     search() {
         fetch(
-             `${process.env.ADMIN_API_URL}/api/customer/search?search=${this.state.value}`
+             `${process.env.REACT_APP_ADMIN_API_URL}/api/customer/search?search=${this.state.value}`
         )
             .then(response => response.json())
             .then(data =>
@@ -77,7 +77,7 @@ class CustomerSearch extends React.Component {
 
     callHealth() {
         fetch(
-            `${process.env.ADMIN_API_URL}/health`
+            `${process.env.REACT_APP_ADMIN_API_URL}/health`
         )
             .then(response => console.log(response.json()));
     }
