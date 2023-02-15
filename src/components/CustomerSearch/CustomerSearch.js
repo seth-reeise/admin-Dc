@@ -1,7 +1,6 @@
 import React from 'react';
 import {HashLink as Link} from 'react-router-hash-link';
 import './styles.scss'
-import {response} from "express";
 
 function SearchListBody(props) {
     if (props.to) {
