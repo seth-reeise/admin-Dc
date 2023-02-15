@@ -1,6 +1,7 @@
 import React from 'react';
 import {HashLink as Link} from 'react-router-hash-link';
 import './styles.scss'
+import {response} from "express";
 
 function SearchListBody(props) {
     if (props.to) {
@@ -58,13 +59,13 @@ class CustomerSearch extends React.Component {
         // alert('A name was submitted: ' + this.state.value);
         // this.setState({ value: event.target.value });
         event.preventDefault();
+        this.callHealth();
         this.search();
     }
-
+    // https://localhost:7119/api/customer/search?search=
     search() {
         fetch(
-            'https://localhost:7119/api/customer/search?search=' +
-            this.state.value
+             `${process.env.ADMIN_API_URL}/api/customer/search?search=${this.state.value}`
         )
             .then(response => response.json())
             .then(data =>
@@ -73,6 +74,13 @@ class CustomerSearch extends React.Component {
                     loading: false,
                 })
             );
+    }
+
+    callHealth() {
+        fetch(
+            `${process.env.ADMIN_API_URL}/health`
+        )
+            .then(response => console.log(response.json()));
     }
 
     componentDidMount() {
